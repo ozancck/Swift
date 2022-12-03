@@ -55,13 +55,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         
                         DispatchQueue .main.async {
                             let confidenceLevel = (topResult?.confidence ?? 0) * 100
-                            self.resutLabel.text = String(confidenceLevel)+"% it's " + String(topResult!.identifier)
+                            let rounded = Int(confidenceLevel * 100) / 100
+                            self.resutLabel.text = String(rounded)+"% it's " + String(topResult!.identifier)
                         }
                     }
                 }
-        
+         
             }
+            
+            let handler = VNImageRequestHandler(ciImage: image)
+            DispatchQueue.global(qos: .userInteractive).async {
+                do{
+                    try handler.perform([request])
+                }catch {
+                    print("error")
+                }
+            }
+            
+            
         }
+        
+        
         
     }
     
