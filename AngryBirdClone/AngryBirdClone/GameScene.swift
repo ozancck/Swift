@@ -20,6 +20,7 @@ class GameScene: SKScene {
     var gameStart = false
     
     var originalPosition: CGPoint?
+
     
     
 
@@ -39,6 +40,7 @@ class GameScene: SKScene {
         bird.physicsBody?.isDynamic = true
         bird.physicsBody?.mass = 0.1
         originalPosition = bird.position
+    
         //box
         
         let boxTexture = SKTexture(imageNamed: "birck")
@@ -186,12 +188,25 @@ class GameScene: SKScene {
        
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-    }
-    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
     override func update(_ currentTime: TimeInterval) {
+        
+        if let birdPhysicsBody = bird.physicsBody {
+            
+            if birdPhysicsBody.velocity.dx <= 0.2 && birdPhysicsBody.velocity.dy <= 0.1 && birdPhysicsBody.angularVelocity <= 0.1 && gameStart == true{
+                
+                bird.physicsBody?.affectedByGravity = false
+                bird.physicsBody?.angularVelocity = 0
+                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                bird.zPosition = 1
+                bird.position = originalPosition!
+                
+                gameStart = false
+                
+            }
+            
+        }
        
     }
 }
