@@ -44,12 +44,36 @@ func converteToIntegerIf( stringInput: String) -> Int {
 
 
 func convertToIntegerGuard(stringInput : String) -> Int{
-    guard let myInteger = Int(stringInput) else{
+    guard let  myInteger = Int(stringInput) else{
         return 0
     }
     return myInteger
     
 }
+
+
+protocol Running {
+    func running()
+}
+
+class Animal {
+    func test(){
+        
+    }
+}
+
+class Dog : Animal, Running{
+    func running() {
+        print("runnn")
+    }
+    
+    
+}
+
+let myDog = Dog()
+
+
+
 
 
 
