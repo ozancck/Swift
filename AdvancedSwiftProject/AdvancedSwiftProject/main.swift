@@ -16,64 +16,48 @@ classOzan.happyBirthday()
 
 print(classOzan.age)
 
+// TUPLE
 
-//TUPLE
-
-
-let myTuple : (Name :  String , Notes : [Int]) //arttirilnilir. Sozluk mantigi
+let myTuple: (Name: String, Notes: [Int]) // arttirilnilir. Sozluk mantigi
 
 myTuple.Name = "ozan"
-myTuple.Notes = [1,45,6,5,6,5,5,6]
-
+myTuple.Notes = [1, 45, 6, 5, 6, 5, 5, 6]
 
 // Guard Let vs If Let
 
 // Guard -> Negative // direkt olmazsa ne olacagini konusmaya basliyoruz.
 // If -> Positive
 
-
-
-func converteToIntegerIf( stringInput: String) -> Int {
-    
+func converteToIntegerIf(stringInput: String) -> Int {
     if let myInteger = Int(stringInput) {
         return myInteger
-    }else {
+    } else {
         return 0
     }
 }
 
-
-func convertToIntegerGuard(stringInput : String) -> Int{
-    guard let  myInteger = Int(stringInput) else{
+func convertToIntegerGuard(stringInput: String) -> Int {
+    guard let myInteger = Int(stringInput) else {
         return 0
     }
     return myInteger
-    
 }
-
 
 protocol Running {
     func running()
 }
 
 class Animal {
-    func test(){
-        
+    func test() {
     }
 }
 
-class Dog : Animal, Running{
+class Dog: Animal, Running {
     func running() {
         print("runnn")
     }
-    
-    
 }
 
 let myDog = Dog()
 
-
-
-
-
-
+let barrry = Dog()
