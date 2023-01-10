@@ -231,7 +231,7 @@
                     <tabBarItem key="tabBarItem" title="Feed" image="house.fill" catalog="system" id="ARo-eT-QC3"/>
                     <connections>
                         <outlet property="tableView" destination="xPy-EL-uKm" id="lRr-SR-H5d"/>
-                        <segue destination="iwW-Qw-mqr" kind="show" id="3rp-DN-uup"/>
+                        <segue destination="iwW-Qw-mqr" kind="show" identifier="toSnapVC" id="3rp-DN-uup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ox-bk-knC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
