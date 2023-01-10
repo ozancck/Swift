@@ -38,9 +38,9 @@ class SignInVC: UIViewController {
         if emailText.text != "" && passwordText.text != "" {
             Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!) { (auth, error) in
                 if error != nil {
-                    makeAlert(title: "error", message: error?.localizedDescription ?? "Error" )
+                    self.makeAlert(title: "error", message: error?.localizedDescription ?? "Error" )
                 }else {
-                    self/performSegue(withIdentifier: "toFeedVC", sender: nil)
+                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
                 }
             }
             

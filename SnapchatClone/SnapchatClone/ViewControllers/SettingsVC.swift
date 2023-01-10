@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsVC: UIViewController {
 
@@ -17,13 +18,24 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logOutbut.layer.cornerRadius = 12
-        setShape.layer.cornerRadius = 999
+        setShape.layer.cornerRadius = setShape.layer.bounds.width / 2
+        setShape.clipsToBounds = true
     }
     
 
 
     
     @IBAction func logOutClicked(_ sender: Any) {
+        
+        do{
+            
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "toSignInVC", sender: nil)
+            
+        }catch{
+            
+        }
+        
     }
     
     

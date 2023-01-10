@@ -84,6 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lTk-Ur-OzZ"/>
                     <connections>
                         <outlet property="emailText" destination="Pk0-Lx-NY6" id="wCL-1x-Seq"/>
                         <outlet property="passwordText" destination="T6r-2Y-APS" id="FOv-wL-cEW"/>
@@ -200,6 +201,7 @@
                     <connections>
                         <outlet property="logOutbut" destination="TMU-OO-2AC" id="lgr-TW-8Ur"/>
                         <outlet property="setShape" destination="87T-LW-3BL" id="jLQ-HC-wch"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toSignInVC" modalPresentationStyle="fullScreen" id="9OF-gV-1wx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DhW-DE-rsp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -266,7 +268,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="x8N-mP-lXx">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="7yx-4l-lPJ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" modalPresentationStyle="fullScreen" id="7yx-4l-lPJ" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vd3-pT-iuk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
