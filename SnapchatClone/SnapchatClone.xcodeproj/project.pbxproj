@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412CF2968C79D0073FC2C /* AppDelegate.swift */; };
 		31A412D22968C79D0073FC2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D12968C79D0073FC2C /* SceneDelegate.swift */; };
-		31A412D42968C79D0073FC2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D32968C79D0073FC2C /* ViewController.swift */; };
+		31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D32968C79D0073FC2C /* SignInVC.swift */; };
 		31A412D72968C79D0073FC2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A412D52968C79D0073FC2C /* Main.storyboard */; };
 		31A412D92968C79E0073FC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A412D82968C79E0073FC2C /* Assets.xcassets */; };
 		31A412DC2968C79E0073FC2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A412DA2968C79E0073FC2C /* LaunchScreen.storyboard */; };
@@ -17,6 +17,9 @@
 		31B9DF012968CA9F00EEC796 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 31B9DF002968CA9F00EEC796 /* FirebaseAuth */; };
 		31B9DF032968CA9F00EEC796 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 31B9DF022968CA9F00EEC796 /* FirebaseFirestore */; };
 		31B9DF052968CA9F00EEC796 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 31B9DF042968CA9F00EEC796 /* FirebaseStorage */; };
+		31C13F7C296DE8630060ADB2 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C13F7B296DE8630060ADB2 /* FeedVC.swift */; };
+		31C13F7E296DE8720060ADB2 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C13F7D296DE8720060ADB2 /* UploadVC.swift */; };
+		31C13F80296DE8890060ADB2 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C13F7F296DE8890060ADB2 /* SettingsVC.swift */; };
 		31DD40D72968C8B1006D136C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31DD40D62968C8B1006D136C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -24,11 +27,14 @@
 		31A412CC2968C79D0073FC2C /* SnapchatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapchatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A412CF2968C79D0073FC2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A412D12968C79D0073FC2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		31A412D32968C79D0073FC2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31A412D32968C79D0073FC2C /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		31A412D62968C79D0073FC2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		31A412D82968C79E0073FC2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31A412DB2968C79E0073FC2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31A412DD2968C79E0073FC2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31C13F7B296DE8630060ADB2 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		31C13F7D296DE8720060ADB2 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		31C13F7F296DE8890060ADB2 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		31DD40D62968C8B1006D136C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,9 +72,9 @@
 		31A412CE2968C79D0073FC2C /* SnapchatClone */ = {
 			isa = PBXGroup;
 			children = (
+				31C13F81296DE89E0060ADB2 /* ViewControllers */,
 				31A412CF2968C79D0073FC2C /* AppDelegate.swift */,
 				31A412D12968C79D0073FC2C /* SceneDelegate.swift */,
-				31A412D32968C79D0073FC2C /* ViewController.swift */,
 				31A412D52968C79D0073FC2C /* Main.storyboard */,
 				31DD40D62968C8B1006D136C /* GoogleService-Info.plist */,
 				31A412D82968C79E0073FC2C /* Assets.xcassets */,
@@ -76,6 +82,17 @@
 				31A412DD2968C79E0073FC2C /* Info.plist */,
 			);
 			path = SnapchatClone;
+			sourceTree = "<group>";
+		};
+		31C13F81296DE89E0060ADB2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				31A412D32968C79D0073FC2C /* SignInVC.swift */,
+				31C13F7B296DE8630060ADB2 /* FeedVC.swift */,
+				31C13F7D296DE8720060ADB2 /* UploadVC.swift */,
+				31C13F7F296DE8890060ADB2 /* SettingsVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,9 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31A412D42968C79D0073FC2C /* ViewController.swift in Sources */,
+				31C13F7C296DE8630060ADB2 /* FeedVC.swift in Sources */,
+				31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */,
 				31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */,
+				31C13F7E296DE8720060ADB2 /* UploadVC.swift in Sources */,
 				31A412D22968C79D0073FC2C /* SceneDelegate.swift in Sources */,
+				31C13F80296DE8890060ADB2 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
