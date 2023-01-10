@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311C3419296E04690061E034 /* SnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3418296E04690061E034 /* SnapVC.swift */; };
 		31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412CF2968C79D0073FC2C /* AppDelegate.swift */; };
 		31A412D22968C79D0073FC2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D12968C79D0073FC2C /* SceneDelegate.swift */; };
 		31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D32968C79D0073FC2C /* SignInVC.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311C3418296E04690061E034 /* SnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapVC.swift; sourceTree = "<group>"; };
 		31A412CC2968C79D0073FC2C /* SnapchatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapchatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A412CF2968C79D0073FC2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A412D12968C79D0073FC2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				31C13F7B296DE8630060ADB2 /* FeedVC.swift */,
 				31C13F7D296DE8720060ADB2 /* UploadVC.swift */,
 				31C13F7F296DE8890060ADB2 /* SettingsVC.swift */,
+				311C3418296E04690061E034 /* SnapVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */,
 				31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */,
 				31C13F7E296DE8720060ADB2 /* UploadVC.swift in Sources */,
+				311C3419296E04690061E034 /* SnapVC.swift in Sources */,
 				31A412D22968C79D0073FC2C /* SceneDelegate.swift in Sources */,
 				31C13F80296DE8890060ADB2 /* SettingsVC.swift in Sources */,
 			);
