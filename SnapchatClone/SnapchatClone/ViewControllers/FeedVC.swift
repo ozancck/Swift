@@ -34,6 +34,11 @@ class FeedVC: UIViewController {
                             UserSingleton.sharedUserInfo.email = Auth.auth().currentUser!.email!
                             UserSingleton.sharedUserInfo.username = username
                         }
+                        
+                        if let pp = document.get("pp") as? String {
+                            UserSingleton.sharedUserInfo.pp = pp
+                            
+                        }
                     }
                 }
             }

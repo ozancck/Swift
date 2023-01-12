@@ -9,7 +9,7 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var shape: UIView!
     @IBOutlet var shape2: UIView!
 
@@ -38,6 +38,25 @@ class SignInVC: UIViewController {
 
         ppImage.layer.cornerRadius = ppImage.layer.bounds.width / 2
         ppImage.clipsToBounds = true
+        
+
+        ppImage.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosenImage))
+        ppImage.addGestureRecognizer(gestureRecognizer)
+
+
+    }
+    
+    @objc func choosenImage() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        ppImage.image = info[.originalImage] as? UIImage
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func signInClicked(_ sender: Any) {
@@ -81,7 +100,7 @@ class SignInVC: UIViewController {
                                     
                                     let firestore = Firestore.firestore()
                                     
-                                    let userDictionary = ["email": self.emailText.text!, "username": self.usernameText.text!, "imageUrl": imageUrl!] as [String: Any]
+                                    let userDictionary = ["email": self.emailText.text!, "username": self.usernameText.text!, "pp": imageUrl!] as [String: Any]
                                     
                                     firestore.collection("userInfo").addDocument(data: userDictionary) { error in
                                         if error != nil {
