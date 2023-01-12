@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		311C3419296E04690061E034 /* SnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3418296E04690061E034 /* SnapVC.swift */; };
+		314B0631296FE54A00BF0B7E /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B0630296FE54A00BF0B7E /* UserSingleton.swift */; };
 		31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412CF2968C79D0073FC2C /* AppDelegate.swift */; };
 		31A412D22968C79D0073FC2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D12968C79D0073FC2C /* SceneDelegate.swift */; };
 		31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A412D32968C79D0073FC2C /* SignInVC.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		311C3418296E04690061E034 /* SnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapVC.swift; sourceTree = "<group>"; };
+		314B0630296FE54A00BF0B7E /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		31A412CC2968C79D0073FC2C /* SnapchatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapchatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A412CF2968C79D0073FC2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A412D12968C79D0073FC2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		314B062F296FE52A00BF0B7E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				314B0630296FE54A00BF0B7E /* UserSingleton.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		31A412C32968C79D0073FC2C = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		31A412CE2968C79D0073FC2C /* SnapchatClone */ = {
 			isa = PBXGroup;
 			children = (
+				314B062F296FE52A00BF0B7E /* Model */,
 				31C13F81296DE89E0060ADB2 /* ViewControllers */,
 				31A412CF2968C79D0073FC2C /* AppDelegate.swift */,
 				31A412D12968C79D0073FC2C /* SceneDelegate.swift */,
@@ -179,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				314B0631296FE54A00BF0B7E /* UserSingleton.swift in Sources */,
 				31C13F7C296DE8630060ADB2 /* FeedVC.swift in Sources */,
 				31A412D42968C79D0073FC2C /* SignInVC.swift in Sources */,
 				31A412D02968C79D0073FC2C /* AppDelegate.swift in Sources */,
