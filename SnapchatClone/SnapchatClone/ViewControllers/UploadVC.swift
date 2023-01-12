@@ -51,11 +51,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
             let imageReference = mediaFolder.child("\(uuid).jpg")
 
-            imageReference.putData(data, metadata: nil) { _, error in
+            imageReference.putData(data, metadata: nil) { snapshot, error in
 
                 if error != nil {
                     self.makeAlert(title: "error", message: error?.localizedDescription ?? "Error")
-                } else {
+                }
+                else {
                     imageReference.downloadURL { url, error in
 
                         if error == nil {
@@ -66,13 +67,14 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 if error != nil {
                                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
 
-                                } else {
+                                }
+                                else {
                                     if snapshot?.isEmpty == false && snapshot != nil {
                                         for document in snapshot!.documents {
                                             let documentId = document.documentID
-                                            if var imageUrlArray = document.get("imageUrlArray") as? [String] {
+                                            if var imageUrlArray = document.get("imageUrls") as? [String] {
                                                 imageUrlArray.append(imageUrl!)
-                                                let additionalDictionary = ["imageUrlArray": imageUrlArray] as [String: Any]
+                                                let additionalDictionary = ["imageUrls": imageUrlArray] as [String: Any]
                                                 fireStore.collection("Snaps").document(documentId).setData(additionalDictionary, merge: true) { error in
                                                     if error == nil {
                                                         self.tabBarController?.selectedIndex = 0
@@ -81,13 +83,16 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                                 }
                                             }
                                         }
-                                    } else {
-                                        let snapDictionary = ["imageUrls": [imageUrl!], "snapOwner": UserSingleton.sharedUserInfo.username, "date": FieldValue.serverTimestamp()]
+                                    }
+                                    
+                                    else {
+                                        let snapDictionary = ["imageUrls": [imageUrl!], "snapOwner": UserSingleton.sharedUserInfo.username, "PP": UserSingleton.sharedUserInfo.pp, "date": FieldValue.serverTimestamp()]
                                             as [String: Any]
-                                        fireStore.collection("Snaps").addDocument(data: snapDictionary) { error in
+                                            fireStore.collection("Snaps").addDocument(data: snapDictionary) { error in
                                             if error != nil {
                                                 self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
-                                            } else {
+                                            }
+                                            else {
                                                 self.tabBarController?.selectedIndex = 0
                                                 self.uploadImageView.image = UIImage(named: "selectimage.png")
                                             }
@@ -95,6 +100,9 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                     }
                                 }
                             }
+                        }
+                        else {
+                            self.makeAlert(title: "errror", message: error?.localizedDescription ?? "error")
                         }
                     }
                 }
