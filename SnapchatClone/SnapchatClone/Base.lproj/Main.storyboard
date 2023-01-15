@@ -176,7 +176,7 @@
                                 <connections>
                                     <action selector="logOutClicked:" destination="Nt7-bY-4l9" eventType="touchUpInside" id="fL5-Vp-zE0"/>
                                     <action selector="signUpClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KsK-kZ-bMJ"/>
-                                    <action selector="uploadClicked:" destination="za5-HG-0H7" eventType="touchUpInside" id="SxN-MB-9Ih"/>
+                                    <action selector="uploadClicked:" destination="za5-HG-0H7" eventType="touchUpInside" id="OTh-YL-WS0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,8 +185,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="square.and.arrow.up.fill" catalog="system" id="DOj-4p-oSy"/>
                     <connections>
-                        <outlet property="uploadButton" destination="DYj-dP-GRY" id="9Vl-p9-lt7"/>
-                        <outlet property="uploadImageView" destination="SQ4-hR-K6L" id="jTf-jh-2vy"/>
+                        <outlet property="uploadImageView" destination="SQ4-hR-K6L" id="jB5-zd-NXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2l-ZF-xoL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

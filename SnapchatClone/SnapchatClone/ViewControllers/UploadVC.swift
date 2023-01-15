@@ -9,31 +9,25 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet var uploadButton: UIButton!
-
-    @IBOutlet var uploadImageView: UIImageView!
-
+class UploadVC : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var uploadImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        uploadButton.layer.cornerRadius = uploadButton.layer.bounds.width / 2
-        uploadButton.clipsToBounds = true
-        uploadButton.layer.cornerRadius = 16
+        // Do any additional setup after loading the view.
 
         uploadImageView.isUserInteractionEnabled = true
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosenImage))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosePicture))
         uploadImageView.addGestureRecognizer(gestureRecognizer)
-
-        uploadImageView.layer.cornerRadius = uploadImageView.layer.bounds.width / 2
-        uploadImageView.clipsToBounds = true
     }
 
-    @objc func choosenImage() {
+    @objc func choosePicture() {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
-        present(picker, animated: true)
+        present(picker, animated: true, completion: nil)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -41,9 +35,11 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
 
+    
     @IBAction func uploadClicked(_ sender: Any) {
         let storage = Storage.storage()
         let storageReference = storage.reference()
+
         let mediaFolder = storageReference.child("media")
 
         if let data = uploadImageView.image?.jpegData(compressionQuality: 0.5) {
@@ -51,30 +47,31 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
             let imageReference = mediaFolder.child("\(uuid).jpg")
 
-            imageReference.putData(data, metadata: nil) { snapshot, error in
-
+            imageReference.putData(data, metadata: nil) { _, error in
                 if error != nil {
-                    self.makeAlert(title: "error", message: error?.localizedDescription ?? "Error")
-                }
-                else {
+                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
+                } else {
                     imageReference.downloadURL { url, error in
-
                         if error == nil {
                             let imageUrl = url?.absoluteString
+
+                            // Firestore
+
                             let fireStore = Firestore.firestore()
 
                             fireStore.collection("Snaps").whereField("snapOwner", isEqualTo: UserSingleton.sharedUserInfo.username).getDocuments { snapshot, error in
                                 if error != nil {
                                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
-
-                                }
-                                else {
+                                } else {
                                     if snapshot?.isEmpty == false && snapshot != nil {
                                         for document in snapshot!.documents {
                                             let documentId = document.documentID
-                                            if var imageUrlArray = document.get("imageUrls") as? [String] {
+
+                                            if var imageUrlArray = document.get("imageUrlArray") as? [String] {
                                                 imageUrlArray.append(imageUrl!)
-                                                let additionalDictionary = ["imageUrls": imageUrlArray] as [String: Any]
+
+                                                let additionalDictionary = ["imageUrlArray": imageUrlArray] as [String: Any]
+
                                                 fireStore.collection("Snaps").document(documentId).setData(additionalDictionary, merge: true) { error in
                                                     if error == nil {
                                                         self.tabBarController?.selectedIndex = 0
@@ -83,16 +80,13 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                                 }
                                             }
                                         }
-                                    }
-                                    
-                                    else {
-                                        let snapDictionary = ["imageUrls": [imageUrl!], "snapOwner": UserSingleton.sharedUserInfo.username, "PP": UserSingleton.sharedUserInfo.pp, "date": FieldValue.serverTimestamp()]
-                                            as [String: Any]
-                                            fireStore.collection("Snaps").addDocument(data: snapDictionary) { error in
+                                    } else {
+                                        let snapDictionary = ["imageUrlArray": [imageUrl!], "snapOwner": UserSingleton.sharedUserInfo.username, "date": FieldValue.serverTimestamp()] as [String: Any]
+
+                                        fireStore.collection("Snaps").addDocument(data: snapDictionary) { error in
                                             if error != nil {
                                                 self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
-                                            }
-                                            else {
+                                            } else {
                                                 self.tabBarController?.selectedIndex = 0
                                                 self.uploadImageView.image = UIImage(named: "selectimage.png")
                                             }
@@ -101,15 +95,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 }
                             }
                         }
-                        else {
-                            self.makeAlert(title: "errror", message: error?.localizedDescription ?? "error")
-                        }
                     }
                 }
             }
         }
     }
-
+    
     func makeAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)

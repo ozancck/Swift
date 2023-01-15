@@ -9,7 +9,7 @@ import Foundation
 
 struct Snap {
     var username: String
-    var imageUrls: [String]
+    var imageUrlArray: [String]
     var date: Date
-    var PP: String 
+    var timeDifference : Int
 }
