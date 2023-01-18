@@ -12,7 +12,7 @@ class UserSingleton {
     static let sharedUserInfo = UserSingleton()
     
     var email = ""
-    var username = "kerim"
+    var username = "mehmet"
     var pp = ""
     
     
