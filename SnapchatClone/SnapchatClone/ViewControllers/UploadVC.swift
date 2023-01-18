@@ -9,10 +9,9 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class UploadVC : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @IBOutlet weak var uploadImageView: UIImageView!
-    
+class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet var uploadImageView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +80,7 @@ class UploadVC : UIViewController, UIImagePickerControllerDelegate, UINavigation
                                             }
                                         }
                                     } else {
-                                        let snapDictionary = ["imageUrlArray": [imageUrl!], "snapOwner": UserSingleton.sharedUserInfo.username, "date": FieldValue.serverTimestamp()] as [String: Any]
+                                        let snapDictionary = ["imageUrlArray": [imageUrl!], "snapOwner" : UserSingleton.sharedUserInfo.username, "date": FieldValue.serverTimestamp()] as [String: Any]
 
                                         fireStore.collection("Snaps").addDocument(data: snapDictionary) { error in
                                             if error != nil {
@@ -100,7 +99,7 @@ class UploadVC : UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
         }
     }
-    
+
     func makeAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)

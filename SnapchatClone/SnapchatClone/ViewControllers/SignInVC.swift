@@ -66,6 +66,9 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     self.makeAlert(title: "error", message: error?.localizedDescription ?? "Error")
                 } else {
                     self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                    UserSingleton.sharedUserInfo.username = self.usernameText.text!
+                    
+                    
                 }
             }
 

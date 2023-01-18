@@ -15,17 +15,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let fireStoreDatabase = Firestore.firestore()
     var snapArray = [Snap]()
     var chosenSnap: Snap?
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        getUserInfo()
 
         getSnapsFromFirebase()
 
-        getUserInfo()
+        
     }
 
     func getSnapsFromFirebase() {
