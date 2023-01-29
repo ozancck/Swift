@@ -11,3 +11,4 @@ struct CryptoCurrency: Decodable {
     let currency: String
     let proce: String
 }
+ 
