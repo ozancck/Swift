@@ -6,6 +6,12 @@
 //
 
 import Foundation
-
+import UIKit
 // Talks to-> presenter
 // Class, protocol
+
+protocol AnyView {
+}
+
+class CryptoView: UIViewController, AnyView {
+}
