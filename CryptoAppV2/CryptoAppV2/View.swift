@@ -17,7 +17,7 @@ protocol AnyView {
     func update(with error: String)
 }
 
-class CryptoView: UIViewController, AnyView, UITableViewDataSource, UITableViewDelegate {
+class CryptoViewController: UIViewController, AnyView, UITableViewDataSource, UITableViewDelegate {
     var presenter: AnyPresenter?
     var cryptos : [Crypto] = []
     
@@ -46,6 +46,8 @@ class CryptoView: UIViewController, AnyView, UITableViewDataSource, UITableViewD
         view.backgroundColor = .yellow
         view.addSubview(tableView)
         view.addSubview(messageLabel)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     override func viewDidLayoutSubviews() {
@@ -54,15 +56,7 @@ class CryptoView: UIViewController, AnyView, UITableViewDataSource, UITableViewD
         tableView.frame = view.bounds
         messageLabel.frame = CGRect(x: view.frame.width / 2 - 100, y: view.frame.height / 2 - 25, width: 200, height: 50)
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cryptos.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-
+    
     func update(with cryptos: [Crypto]) {
         DispatchQueue.main.async {
             self.cryptos = cryptos
@@ -73,6 +67,29 @@ class CryptoView: UIViewController, AnyView, UITableViewDataSource, UITableViewD
     }
 
     func update(with error: String) {
+        DispatchQueue.main.async {
+            self.cryptos = []
+            self.tableView.isHidden = true
+            self.messageLabel.text = error
+            self.messageLabel.isHidden = false
+        }
         
     }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cryptos.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = cryptos[indexPath.row].currency
+        content.secondaryText = cryptos[indexPath.row].price
+        cell.contentConfiguration = content
+        cell.backgroundColor = .yellow
+        
+        return cell
+    }
+
+  
 }

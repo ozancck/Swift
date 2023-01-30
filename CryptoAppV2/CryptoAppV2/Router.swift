@@ -26,7 +26,7 @@ class CryptoRouter: AnyRouter {
     static func startExecution() -> AnyRouter {
         let router = CryptoRouter()
         
-        var view : AnyView = CryptoView()
+        var view : AnyView = CryptoViewController()
         var presenter : AnyPresenter = CryptoPresenter()
         var interactor : AnyInterector = CryptoInteractor()
         

@@ -26,17 +26,21 @@ protocol AnyPresenter {
 class CryptoPresenter: AnyPresenter {
     var router: AnyRouter?
 
-    var interactor: AnyInterector?
+    var interactor: AnyInterector? {
+        didSet {
+            interactor?.downloadCryptos()
+        }
+    }
 
     var view: AnyView?
 
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>) {
         switch result {
         case let .success(cryptos):
-            print("update")
+            view?.update(with: cryptos)
 
         case let .failure(error):
-            print("errr")
+            view?.update(with: "try again...\(error)")
         }
     }
 }
