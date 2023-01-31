@@ -18,14 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let routerInstance = CryptoRouter.startExecution()
 
-        let initalViewController = routerInstance.entry
+        let initialViewController = routerInstance.entry
 
         let window = UIWindow(windowScene: windowScene)
 
-        window.rootViewController = initalViewController
-
+        window.rootViewController = initialViewController
         self.window = window
-
         window.makeKeyAndVisible()
     }
 

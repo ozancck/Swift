@@ -11,13 +11,13 @@ import Foundation
 // talks to -> interactor, router, view
 
 enum NetworkError: Error {
-    case NetworkFaild
-    case ParsingFailed
+    case networkFailed
+    case parsingFailed
 }
 
 protocol AnyPresenter {
     var router: AnyRouter? { get set }
-    var interactor: AnyInterector? { get set }
+    var interactor: AnyInteractor? { get set }
     var view: AnyView? { get set }
 
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>)
@@ -26,21 +26,26 @@ protocol AnyPresenter {
 class CryptoPresenter: AnyPresenter {
     var router: AnyRouter?
 
-    var interactor: AnyInterector? {
+    var interactor: AnyInteractor? {
         didSet {
-            interactor?.downloadCryptos()
+            interactor?.downloadCrypto()
         }
     }
 
     var view: AnyView?
 
+    /*
+     init(){
+         interactor?.downloadCrypto()
+     }
+      */
+
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>) {
         switch result {
         case let .success(cryptos):
             view?.update(with: cryptos)
-
-        case let .failure(error):
-            view?.update(with: "try again...\(error)")
+        case .failure:
+            view?.update(with: "Try again later")
         }
     }
 }
