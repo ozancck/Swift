@@ -15,3 +15,6 @@ Swift notes I made
 
 # CryptoAppV2  (VIPER)
 
+<img width= "200" alt= "loading page" src="https://user-images.githubusercontent.com/77584235/217364395-a48de1c7-b424-4cf1-82df-ce23d02e7cd0.png"><img width= "200" alt= "main page" src="https://user-images.githubusercontent.com/77584235/217364415-1dce4c6c-efd6-463d-9926-2bf839d1c966.png"><img width= "200" alt= "detail page" src="https://user-images.githubusercontent.com/77584235/217364426-7f68d72e-6f7c-4edd-817b-e940f8a0c713.png">
+
+
