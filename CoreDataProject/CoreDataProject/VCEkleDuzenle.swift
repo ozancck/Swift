@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class VCEkleDuzenle: UIViewController {
 
@@ -15,11 +16,18 @@ class VCEkleDuzenle: UIViewController {
     
     @IBOutlet weak var tfEmail: UITextField!
     
+    var kisi : Kisi?
+    
      
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if kisi != nil {
+            tfName.text = kisi!.ad
+            tfSurname.text = kisi!.soyad
+            tfEmail.text = kisi!.eposta
+        }
+        
     }
     
 
@@ -34,7 +42,30 @@ class VCEkleDuzenle: UIViewController {
     */
 
     @IBAction func btnVazgecTUI(_ sender: Any) {
+        dismiss(animated: true)
     }
     @IBAction func btnKaydetTUI(_ sender: Any) {
+        
+        if kisi == nil {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Kisi", in: context)
+            let kisi = NSManagedObject(entity: entity!, insertInto: context)
+            
+            
+            kisi.setValue(tfName.text, forKey: "ad")
+            kisi.setValue(tfSurname.text, forKey: "soyad")
+            kisi.setValue(tfEmail.text, forKey: "eposta")
+        }else {
+            
+            kisi!.ad = tfName.text!
+            kisi!.soyad = tfSurname.text!
+            kisi!.eposta = tfEmail.text!
+            
+        }
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        dismiss(animated: true)
+        
     }
 }
