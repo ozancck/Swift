@@ -51,4 +51,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "sgDuzenle", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgDuzenle"
+        {
+            let hedefVc = segue.destination as? VCEkleDuzenle
+            hedefVc?.kisi = kisiListesi![sender as! Int]
+        }
+    }
 }
