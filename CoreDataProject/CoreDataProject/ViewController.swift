@@ -41,6 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func kisileriGetir() {
         let fr : NSFetchRequest<Kisi> = Kisi.fetchRequest()
+        fr.sortDescriptors = [NSSortDescriptor(key: "ad", ascending: true)]
         
         do {
             
@@ -62,6 +63,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         {
             let hedefVc = segue.destination as? VCEkleDuzenle
             hedefVc?.kisi = kisiListesi![sender as! Int]
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.delete(kisiListesi![indexPath.row])
+            
+            kisileriGetir()
         }
     }
 }
